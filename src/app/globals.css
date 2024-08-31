@@ -1,0 +1,563 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #201f1a;
+  --background-start-rgb: #f1f0ebe5;
+  --background-end: #F1F0EB;
+  --background: #001929;
+  --whiteBackground: #fafafa;
+  --highlight: #A8A754;
+  --typo: #DDD;
+  --typoTransparency: #DDDDDDDD;
+  --lightBackground : #2A5E7E;
+  --darkHighlight: #292800;
+  --backgroundTransparencyLight: #2a5e7e1a;
+  --backgroundTransparencyMedium: #2a5e7e55;
+  --backgroundTransparencyDark: #001929e0; 
+  --highlightTransparency:#A8A75433;
+  --highlightTransparencyMedium:#A8A75499;
+
+  /* Colors palette */
+  --rs-primary-50: var(--background);
+  --rs-primary-100: var(--backgroundTransparencyMedium);   /* hover dias calendario*/
+  --rs-primary-200: var(--background);
+  --rs-primary-300: var(--background);
+  --rs-primary-400: var(--background);
+  --rs-primary-500: var(--highlight);  /*barra activa slider y activos y boton calendario */
+  --rs-primary-600: var(--highlightTransparencyMedium);  /*hover boton calendario*/
+  --rs-primary-700: var(--lightBackground); /*links calendario y hover calendario*/
+  --rs-primary-800: var(--background);
+  --rs-primary-900: var(--background);
+  --rs-calendar-date-selected-text: var(--typo);
+  --rs-calendar-today-text: var(--typo);
+
+  /* Gray levels  */
+  --rs-gray-0: var(--whiteBackground); /*background*/
+  --rs-gray-50: var(--background);
+  --rs-gray-100: var(--highlightTransparency);   /*barra inactiva*/
+  --rs-gray-200: var(--highlightTransparencyMedium);  /*divider y barra inactiva hover*/
+  --rs-gray-300: var(--background);
+  --rs-gray-400: var(--backgroundTransparencyMedium);   /*dias inactivos*/
+  --rs-gray-500: var(--background);
+  --rs-gray-600: var(--background);   /* texto dias de la semana y formato cerrado*/
+  --rs-gray-700: var(--background);
+  --rs-gray-800: var(--background); /*texto meses y formato activo*/
+  --rs-gray-900: var(--lightBackground);  /* tooltip background*/
+
+}
+
+body{
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end))
+  )
+  rgb(var(--background-start));
+}
+
+
+/*
+
+TOP MENU
+
+*/
+
+.topMenu{
+  display: inline-flex;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background-color: var(--backgroundTransparencyDark);
+  color: var(--typo);
+  z-index: 30;
+}
+.TM_rightSection{
+  position: absolute;
+    right: 20px;
+    top: 14px;
+    display: inline-flex;
+}
+.addEvent{
+  margin-right: 20px;
+  cursor: pointer;
+}
+input{
+  background-color: var(--whiteBackground);
+  border-color: var(--whiteBackground);
+  border-radius: 5px;
+  color: var(--background);
+  border: none !important;
+}
+input:focus-visible, input:active, input:visited, input:focus{
+  border: none !important;
+  border-color: var(--whiteBackground);
+}
+
+
+/* 
+
+MENU 
+
+*/
+
+
+#menu {
+  color: var(--typo);
+  position: fixed;
+  background-color: var(--backgroundTransparencyDark);
+  top:50px;
+  left:0;
+  width: 300px;
+  height: 100vh;
+}
+
+div.menuItem{
+  padding: 20px 10px;
+  margin: 0 10px;
+  border-bottom: var(--highlightTransparency) 1px solid;
+}
+.dateTagOption, .coverTagOption{
+  display: block;
+  padding: 0 2px;
+}
+.typeTags{
+  font-size: small;
+  padding: 5px;
+  margin: 2px;
+  background-color: var(--backgroundTransparencyLight);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.typeTags:hover{
+  background-color: var(--backgroundTransparencyMedium);
+}
+.typeTags.tagActive{
+  background-color: var(--highlightTransparencyMedium);
+}
+.typeTags.material-symbols-outlined {
+  display: flex;
+  vertical-align: middle;
+  font-size: 15px;
+  padding: 0 3px 0 0;
+  margin: 0px;
+  pointer-events: none;
+}
+#coverTitle{
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.coverValues{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 7px;
+}
+.locationTags.provincia{
+  font-size: 20px;
+  padding: 5px;
+  margin: 2px;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--backgroundTransparencyLight);
+  cursor: pointer;
+}
+.locationTags.provincia:hover{
+  background-color: var(--backgroundTransparencyMedium);
+}
+.locationTags.provincia.hideProvincia{
+  display: none;
+}
+.locationTags.provincia.provinciaActive{
+  background-color: var(--highlightTransparency);
+}
+.canton{
+  font-size: small;
+  padding: 5px;
+  margin: 2px;
+  background-color: var(--backgroundTransparencyLight);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.canton.tagActive{
+  background-color: var(--highlightTransparencyMedium);
+}
+.menuOrderTitle{
+  font-size: 20px;
+  padding: 5px;
+  margin: 2px;
+}
+.menuOrderOption{
+  padding: 5px;
+  margin: 2px;
+  background-color: var(--backgroundTransparencyLight);
+  cursor: pointer;
+}
+.currentOrder {
+  background-color: var(--highlightTransparencyMedium);
+}
+.lineOver{
+  text-decoration:line-through;
+}
+.menuPetFriendly{
+  font-size: 18px;
+  padding: 5px;
+  margin: 2px;
+  background-color: var(--backgroundTransparencyLight);
+  cursor: pointer;  
+}
+.menuPetFriendly:hover{
+  background-color: var(--backgroundTransparencyMedium);
+}
+.menuPetFriendly.tagActive{
+  background-color: var(--highlightTransparencyMedium);
+}
+
+
+/* 
+
+GRID and CARDS
+
+*/
+
+.monthDivider{
+  font-size: 150px;
+  color: var(--whiteBackground);
+  margin: 30px 0 30px 300px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  background-color: var(--highlight);
+  line-height: 0.8;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+}
+.month{
+  margin-top: 80px;
+}
+.grid {
+  color: var(--typo);
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 320px;
+}
+
+.eventCard{
+  width: 500px;
+  height: 300px;
+  margin: 12px;
+}
+.card{
+  display: flex;
+  width: 100%;
+  background-color: var(--backgroundTransparencyDark);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--backgroundTransparencyLight);
+}
+.cardImage{
+  border-radius: 16px;
+}
+.cardMainInfo{
+  display: flex;
+  position: relative;
+  flex-basis: 100%;
+}
+.cardDescription.hidden{
+  display: none;
+}
+.cardImportantInfo{
+  padding: 20px;
+}
+.cardImportantInfo p{
+  margin: 5px 0;
+  text-wrap: pretty;
+}
+.cardImportantInfo a{
+  color: var(--typo);
+  text-decoration: none;
+}
+.cardImportantInfo a:hover{
+  color: var(--highlight);
+}
+.cardDescription{
+  position: absolute;
+  background-color: var(--backgroundTransparencyDark);
+  width: 500px;
+  height: 300px;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid var(--backgroundTransparencyLight);
+  overflow: auto;
+  scrollbar-color: var(--backgroundTransparencyDark) var(--highlightTransparency);
+  white-space: pre-line;
+}
+.cardDescriptionContent{
+  padding: 20px;
+}
+h2.cardHeader{
+  color: var(--highlight);
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  line-height: inherit;
+}
+.material-symbols-outlined{
+  color: var(--highlight);
+}
+.cardImportantInfo .material-symbols-outlined{
+  font-size: 20px;
+  margin-right: 5px;
+}
+.cardCover, .cardLoc, .cardDate{
+  display: flex;
+}
+.cardLoc{
+  position: relative;
+}
+.cardRightInfo{
+  position: relative;
+  width: 100%;
+}
+.cardMoreLinks {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.moreInfoLinks, .showDescription{
+  padding: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.showDescription{
+  border-right: var(--highlight) 1px solid;
+  cursor: pointer;
+}
+.moreInfoLinks{
+  color: var(--typo);
+  text-decoration: none;
+}
+.moreInfoLinks:hover, .showDescription:hover{
+  color: var(--highlight);
+  text-decoration: none;
+}
+.material-symbols-outlined.typeIcon{
+  display: block;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 150px;
+  color: var(--highlightTransparency);
+}
+.locTooltipText{
+  visibility: hidden;
+  width: 160px;
+  background-color: var(--lightBackground);
+  color: var(--typo);
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 15;
+  top: 120%;
+}
+.locTooltipText::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--lightBackground) transparent;
+}
+.cardLoc:hover .locTooltipText {
+  visibility: visible;
+}
+
+.noEventsMessage{
+  margin-left: 320px;
+  margin-top: 70px;
+  font-size: x-large;
+}
+
+.cleanFilters{
+  margin-top: 20px;
+  background-color: var(--highlight);
+  color: var(--whiteBackground);
+  padding: 7px 15px;
+}
+
+/*
+
+Form
+
+*/
+
+.rs-modal-backdrop {
+  background-color: var(--backgroundTransparencyLight);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.rs-modal-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.rs-modal-header .rs-modal-header-close {
+  font-size: 20px;
+}
+
+.rs-form-control-label {
+  font-size: 16px;
+}
+
+.rs-form-vertical .rs-form-group .rs-form-control-wrapper {
+  display: inline-block;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.rs-modal-content {
+  background-color: var(--typoTransparency);
+}
+.rs-picker-toolbar-ranges .rs-stack-item .rs-btn{
+  background-color: #fff;
+  color: var(--highlight);
+  border: var(--highlight) solid 2px;
+}
+.rs-btn {
+  background-color: var(--highlight);
+  color: var(--darkHighlight)
+}
+.rs-btn:focus, .rs-btn:hover {
+  background-color: var(--darkHighlight);
+  color: var(--typo);
+  text-decoration: none;
+}
+.rs-picker-toolbar-ranges .rs-stack-item .rs-btn:focus, .rs-picker-toolbar-ranges .rs-stack-item .rs-btn:hover {
+  color: var(--darkHighlight);
+  border: var(--darkHighlight) solid 2px;
+}
+.rs-btn-primary:focus, .rs-btn-primary:hover {
+  background-color: var(--darkHighlight);
+  color: var(--typo);
+}
+.rs-modal-footer {
+  margin-top: 20px;
+}
+.rs-tag {
+  color: var(--typo);
+}
+.rs-calendar-time-dropdown-column-title {
+  background-color: var(--whiteBackground);
+}
+.rs-picker-popup .rs-calendar .rs-calendar-time-dropdown-column>ul {
+  height: 190px;
+}
+
+.rs-modal-content .rs-btn-default, .rs-modal-content .rs-btn-subtle{
+  background-color: #fff;
+  color: var(--highlight);
+  border: var(--highlight) solid 2px;
+}
+
+.rs-modal-content .rs-btn-default:hover, .rs-modal-content .rs-btn-default:focus,
+.rs-modal-content .rs-btn-subtle:hover, .rs-modal-content .rs-btn-subtle:focus{
+  color: var(--darkHighlight);
+  border: var(--darkHighlight) solid 2px;
+}
+
+.coverEventForm{
+  width: 50%;
+  display: inline-block;
+}
+
+.rs-picker-toggle-wrapper {
+  width: 100%;
+}
+
+/* 
+
+ICONS 
+
+*/
+
+.typeIcon.Literatura::after, .typeTags.Literatura::before{
+  content: "book_2";
+}
+.typeIcon.Cine::after, .typeTags.Cine::before{
+  content:"movie"
+}
+.typeIcon.Espectaculo::after, .typeTags.Espectaculo::before{
+  content:"stadium"
+}
+.typeIcon.StandUp_Comedy::after, .typeTags.StandUp_Comedy::before{
+  content:"comedy_mask"
+}
+.typeIcon.Musica::after, .typeTags.Musica::before{
+  content:"music_note"
+}
+.typeIcon.Teatro::after, .typeTags.Teatro::before{
+  content:"theater_comedy"
+}
+.typeIcon.Baile::after, .typeTags.Baile::before{
+  content:"partner_exchange"
+}
+.typeIcon.Expo::after, .typeTags.Expo::before{
+  content:"person_play"
+}
+.typeIcon.Feria::after, .typeTags.Feria::before{
+  content:"festival"
+}
+.typeIcon.Nightlife::after, .typeTags.Nightlife::before{
+  content:"nightlife"
+}
+.typeIcon.Conversatorio::after, .typeTags.Conversatorio::before{
+  content:"voice_selection"
+}
+.typeIcon.Taller::after, .typeTags.Taller::before{
+  content:"school"
+}
+.typeIcon.Ciclismo::after, .typeTags.Ciclismo::before{
+  content:"directions_bike"
+}
+.typeIcon.Running::after, .typeTags.Running::before{
+  content:"sprint"
+}
+.typeIcon.Natacion::after, .typeTags.Natacion::before{
+  content:"pool"
+}
+.typeIcon.Hiking::after, .typeTags.Hiking::before{
+  content:"hiking"
+}
+.typeIcon.Deporte::after, .typeTags.Deporte::before{
+  content:"sports_score"
+}
+.typeIcon.Yoga_Pilates::after, .typeTags.Yoga_Pilates::before{
+  content:"self_improvement"
+}
+.typeIcon.Juegos_de_mesa::after, .typeTags.Juegos_de_mesa::before{
+  content:"chess"
+}
+.typeIcon.Ambiental::after, .typeTags.Ambiental::before{
+  content:"forest"
+}
+.typeIcon.Cultural::after, .typeTags.Cultural::before{
+  content:"diversity_2"
+}
+.typeIcon.Otros::after, .typeTags.Otros::before{
+  content:"interests"
+}

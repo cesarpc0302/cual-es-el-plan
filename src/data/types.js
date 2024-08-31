@@ -1,0 +1,26 @@
+const types = [
+        {"id":1,"name":"Literatura","icon":"book_2"},
+        {"id":2,"name":"Cine","icon":"movie"},
+        {"id":3,"name":"Espectaculo","icon":"stadium"},
+        {"id":4,"name":"StandUp_Comedy","icon":"comedy_mask"},
+        {"id":5,"name":"Musica","icon":"music_note"},
+        {"id":6,"name":"Teatro","icon":"theater_comedy"},
+        {"id":7,"name":"Baile","icon":"sports_kabaddi"},
+        {"id":8,"name":"Expo","icon":"person_play"},
+        {"id":9,"name":"Feria","icon":"festival"},
+        {"id":10,"name":"Nightlife","icon":"nightlife"},
+        {"id":11,"name":"Conversatorio","icon":"voice_selection"},
+        {"id":12,"name":"Taller","icon":"school"},
+        {"id":13,"name":"Ciclismo","icon":"directions_bike"},
+        {"id":14,"name":"Running","icon":"sprint"},
+        {"id":15,"name":"Natacion","icon":"pool"},
+        {"id":16,"name":"Hiking","icon":"hiking"},
+        {"id":17,"name":"Deporte","icon":"sports_score"},
+        {"id":18,"name":"Yoga_Pilates","icon":"self_improvement"},
+        {"id":19,"name":"Juegos_de_mesa","icon":"chess"},
+        {"id":20,"name":"Ambiental","icon":"forest"},
+        {"id":21,"name":"Cultural","icon":"diversity_2"},
+        {"id":22,"name":"Otros","icon":"interests"},
+    ]
+
+export default types
